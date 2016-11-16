@@ -1,0 +1,29 @@
+{
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "0A02D7AD172CD0FE10B50DDED69BA407037CC7BF" : 0,
+    "E55CF83B90BF31E6ED4660B04513F3BFED9CBB8E" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "414E84A0-8ADE-4154-9451-BC0229C7F82E",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "0A02D7AD172CD0FE10B50DDED69BA407037CC7BF" : "Book\/leancloud-objc-sdk\/Breakpad\/",
+    "E55CF83B90BF31E6ED4660B04513F3BFED9CBB8E" : "Book\/leancloud-objc-sdk\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "Book",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Book.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/leancloud\/Breakpad.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "0A02D7AD172CD0FE10B50DDED69BA407037CC7BF"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/leancloud\/objc-sdk.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "E55CF83B90BF31E6ED4660B04513F3BFED9CBB8E"
+    }
+  ]
+}

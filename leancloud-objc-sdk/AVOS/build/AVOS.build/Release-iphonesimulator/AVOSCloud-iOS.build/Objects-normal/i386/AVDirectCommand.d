@@ -1,0 +1,19 @@
+dependencies: \
+  /Users/jim/Documents/xcode/Book/leancloud-objc-sdk/AVOS/AVOSCloud/IM/Commands/AVDirectCommand.m \
+  /Users/jim/Documents/xcode/Book/leancloud-objc-sdk/AVOS/AVOSCloud/IM/Commands/AVDirectCommand.h \
+  /Users/jim/Documents/xcode/Book/leancloud-objc-sdk/AVOS/AVOSCloud/IM/Commands/AVCommand.h \
+  /Users/jim/Documents/xcode/Book/leancloud-objc-sdk/AVOS/AVOSCloud/IM/Commands/AVDynamicBase.h \
+  /Users/jim/Documents/xcode/Book/leancloud-objc-sdk/AVOS/AVOSCloud/IM/AVMessage.h \
+  /Users/jim/Documents/xcode/Book/leancloud-objc-sdk/AVOS/AVOSCloud/IM/Commands/AVCommandCommon.h \
+  /Users/jim/Documents/xcode/Book/leancloud-objc-sdk/AVOS/AVOSCloud/IM/Commands/AVAckCommand.h \
+  /Users/jim/Documents/xcode/Book/leancloud-objc-sdk/AVOS/AVOSCloud/IM/Commands/AVDirectInCommand.h \
+  /Users/jim/Documents/xcode/Book/leancloud-objc-sdk/AVOS/AVOSCloud/IM/Commands/AVDirectOutCommand.h \
+  /Users/jim/Documents/xcode/Book/leancloud-objc-sdk/AVOS/AVOSCloud/IM/Commands/AVPresenceCommand.h \
+  /Users/jim/Documents/xcode/Book/leancloud-objc-sdk/AVOS/AVOSCloud/IM/Commands/AVRoomCommand.h \
+  /Users/jim/Documents/xcode/Book/leancloud-objc-sdk/AVOS/AVOSCloud/IM/AVSignature.h \
+  /Users/jim/Documents/xcode/Book/leancloud-objc-sdk/AVOS/AVOSCloud/AVConstants.h \
+  /Users/jim/Documents/xcode/Book/leancloud-objc-sdk/AVOS/AVOSCloud/AVAvailability.h \
+  /Users/jim/Documents/xcode/Book/leancloud-objc-sdk/AVOS/AVOSCloud/IM/Commands/AVSessionCommand.h \
+  /Users/jim/Documents/xcode/Book/leancloud-objc-sdk/AVOS/AVOSCloud/IM/Commands/AVSessionInCommand.h \
+  /Users/jim/Documents/xcode/Book/leancloud-objc-sdk/AVOS/AVOSCloud/IM/Commands/AVSessionOutCommand.h \
+  /Users/jim/Documents/xcode/Book/leancloud-objc-sdk/AVOS/AVOSCloud/IM/Commands/AVRcpCommand.h

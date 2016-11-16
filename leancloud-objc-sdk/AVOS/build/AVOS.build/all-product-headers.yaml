@@ -1,0 +1,183 @@
+{
+  'version': 0,
+  'case-sensitive': 'false',
+  'roots': [
+    {
+      'type': 'directory',
+      'name': "/Users/jim/Documents/xcode/Book/leancloud-objc-sdk/AVOS/AVOS.xcodeproj/build/.slices/AVOSCloud-iOS/iphonesimulator/AVOSCloud.framework/Headers",
+      'contents': [
+        {
+          'type': 'file',
+          'name': "AVACL.h",
+          'external-contents': "/Users/jim/Documents/xcode/Book/leancloud-objc-sdk/AVOS/AVOSCloud/ACL/AVACL.h"
+        },
+        {
+          'type': 'file',
+          'name': "AVAnalytics.h",
+          'external-contents': "/Users/jim/Documents/xcode/Book/leancloud-objc-sdk/AVOS/AVOSCloud/Analytics/AVAnalytics.h"
+        },
+        {
+          'type': 'file',
+          'name': "AVAnonymousUtils.h",
+          'external-contents': "/Users/jim/Documents/xcode/Book/leancloud-objc-sdk/AVOS/AVOSCloud/User/AVAnonymousUtils.h"
+        },
+        {
+          'type': 'file',
+          'name': "AVAvailability.h",
+          'external-contents': "/Users/jim/Documents/xcode/Book/leancloud-objc-sdk/AVOS/AVOSCloud/AVAvailability.h"
+        },
+        {
+          'type': 'file',
+          'name': "AVCloud.h",
+          'external-contents': "/Users/jim/Documents/xcode/Book/leancloud-objc-sdk/AVOS/AVOSCloud/CloudCode/AVCloud.h"
+        },
+        {
+          'type': 'file',
+          'name': "AVCloudQueryResult.h",
+          'external-contents': "/Users/jim/Documents/xcode/Book/leancloud-objc-sdk/AVOS/AVOSCloud/Query/AVCloudQueryResult.h"
+        },
+        {
+          'type': 'file',
+          'name': "AVConstants.h",
+          'external-contents': "/Users/jim/Documents/xcode/Book/leancloud-objc-sdk/AVOS/AVOSCloud/AVConstants.h"
+        },
+        {
+          'type': 'file',
+          'name': "AVFile.h",
+          'external-contents': "/Users/jim/Documents/xcode/Book/leancloud-objc-sdk/AVOS/AVOSCloud/File/AVFile.h"
+        },
+        {
+          'type': 'file',
+          'name': "AVFileQuery.h",
+          'external-contents': "/Users/jim/Documents/xcode/Book/leancloud-objc-sdk/AVOS/AVOSCloud/File/AVFileQuery.h"
+        },
+        {
+          'type': 'file',
+          'name': "AVGeoPoint.h",
+          'external-contents': "/Users/jim/Documents/xcode/Book/leancloud-objc-sdk/AVOS/AVOSCloud/Geo/AVGeoPoint.h"
+        },
+        {
+          'type': 'file',
+          'name': "AVGroup.h",
+          'external-contents': "/Users/jim/Documents/xcode/Book/leancloud-objc-sdk/AVOS/AVOSCloud/IM/AVGroup.h"
+        },
+        {
+          'type': 'file',
+          'name': "AVHistoryMessage.h",
+          'external-contents': "/Users/jim/Documents/xcode/Book/leancloud-objc-sdk/AVOS/AVOSCloud/IM/AVHistoryMessage.h"
+        },
+        {
+          'type': 'file',
+          'name': "AVHistoryMessageQuery.h",
+          'external-contents': "/Users/jim/Documents/xcode/Book/leancloud-objc-sdk/AVOS/AVOSCloud/IM/AVHistoryMessageQuery.h"
+        },
+        {
+          'type': 'file',
+          'name': "AVInstallation.h",
+          'external-contents': "/Users/jim/Documents/xcode/Book/leancloud-objc-sdk/AVOS/AVOSCloud/Push/AVInstallation.h"
+        },
+        {
+          'type': 'file',
+          'name': "AVLogger.h",
+          'external-contents': "/Users/jim/Documents/xcode/Book/leancloud-objc-sdk/AVOS/AVOSCloud/Utils/AVLogger.h"
+        },
+        {
+          'type': 'file',
+          'name': "AVMessage.h",
+          'external-contents': "/Users/jim/Documents/xcode/Book/leancloud-objc-sdk/AVOS/AVOSCloud/IM/AVMessage.h"
+        },
+        {
+          'type': 'file',
+          'name': "AVOSCloud-Swift.h",
+          'external-contents': "/Users/jim/Documents/xcode/Book/leancloud-objc-sdk/AVOS/AVOS.xcodeproj/build/.slices/AVOSCloud-iOS/iphonesimulator/AVOSCloud.framework/Headers/AVOSCloud-Swift.h"
+        },
+        {
+          'type': 'file',
+          'name': "AVOSCloud.h",
+          'external-contents': "/Users/jim/Documents/xcode/Book/leancloud-objc-sdk/AVOS/AVOSCloud/AVOSCloud.h"
+        },
+        {
+          'type': 'file',
+          'name': "AVObject+Subclass.h",
+          'external-contents': "/Users/jim/Documents/xcode/Book/leancloud-objc-sdk/AVOS/AVOSCloud/Object/AVObject+Subclass.h"
+        },
+        {
+          'type': 'file',
+          'name': "AVObject.h",
+          'external-contents': "/Users/jim/Documents/xcode/Book/leancloud-objc-sdk/AVOS/AVOSCloud/Object/AVObject.h"
+        },
+        {
+          'type': 'file',
+          'name': "AVPush.h",
+          'external-contents': "/Users/jim/Documents/xcode/Book/leancloud-objc-sdk/AVOS/AVOSCloud/Push/AVPush.h"
+        },
+        {
+          'type': 'file',
+          'name': "AVQuery.h",
+          'external-contents': "/Users/jim/Documents/xcode/Book/leancloud-objc-sdk/AVOS/AVOSCloud/Query/AVQuery.h"
+        },
+        {
+          'type': 'file',
+          'name': "AVRelation.h",
+          'external-contents': "/Users/jim/Documents/xcode/Book/leancloud-objc-sdk/AVOS/AVOSCloud/Object/AVRelation.h"
+        },
+        {
+          'type': 'file',
+          'name': "AVRole.h",
+          'external-contents': "/Users/jim/Documents/xcode/Book/leancloud-objc-sdk/AVOS/AVOSCloud/ACL/AVRole.h"
+        },
+        {
+          'type': 'file',
+          'name': "AVSaveOption.h",
+          'external-contents': "/Users/jim/Documents/xcode/Book/leancloud-objc-sdk/AVOS/AVOSCloud/Object/AVSaveOption.h"
+        },
+        {
+          'type': 'file',
+          'name': "AVSearchQuery.h",
+          'external-contents': "/Users/jim/Documents/xcode/Book/leancloud-objc-sdk/AVOS/AVOSCloud/Search/AVSearchQuery.h"
+        },
+        {
+          'type': 'file',
+          'name': "AVSearchSortBuilder.h",
+          'external-contents': "/Users/jim/Documents/xcode/Book/leancloud-objc-sdk/AVOS/AVOSCloud/Search/AVSearchSortBuilder.h"
+        },
+        {
+          'type': 'file',
+          'name': "AVSession.h",
+          'external-contents': "/Users/jim/Documents/xcode/Book/leancloud-objc-sdk/AVOS/AVOSCloud/IM/AVSession.h"
+        },
+        {
+          'type': 'file',
+          'name': "AVSignature.h",
+          'external-contents': "/Users/jim/Documents/xcode/Book/leancloud-objc-sdk/AVOS/AVOSCloud/IM/AVSignature.h"
+        },
+        {
+          'type': 'file',
+          'name': "AVStatus.h",
+          'external-contents': "/Users/jim/Documents/xcode/Book/leancloud-objc-sdk/AVOS/AVOSCloud/Status/AVStatus.h"
+        },
+        {
+          'type': 'file',
+          'name': "AVSubclassing.h",
+          'external-contents': "/Users/jim/Documents/xcode/Book/leancloud-objc-sdk/AVOS/AVOSCloud/Object/AVSubclassing.h"
+        },
+        {
+          'type': 'file',
+          'name': "AVUser.h",
+          'external-contents': "/Users/jim/Documents/xcode/Book/leancloud-objc-sdk/AVOS/AVOSCloud/User/AVUser.h"
+        }
+      ]
+    },
+    {
+      'type': 'directory',
+      'name': "/Users/jim/Documents/xcode/Book/leancloud-objc-sdk/AVOS/AVOS.xcodeproj/build/.slices/AVOSCloud-iOS/iphonesimulator/AVOSCloud.framework/Modules",
+      'contents': [
+        {
+          'type': 'file',
+          'name': "module.modulemap",
+          'external-contents': "/Users/jim/Documents/xcode/Book/leancloud-objc-sdk/AVOS/build/AVOS.build/Release-iphonesimulator/AVOSCloud-iOS.build/module.modulemap"
+        }
+      ]
+    }
+  ]
+}
