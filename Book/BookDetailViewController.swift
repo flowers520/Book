@@ -8,12 +8,17 @@
 
 import UIKit
 
-class BookDetailViewController: UIViewController,BookTabBarDelegate{
+class BookDetailViewController: UIViewController,BookTabBarDelegate,InputViewDelegate{
 
     var BookObject:AVObject!
     var BookTitleView:BookDetailView!
     var BookViewTabbar:BookTabBar!
     var BookTextView:UITextView!
+    
+    var input: InputView!
+    var layView: UIView!
+    var keyBoardHeight: CGFloat = 0.0
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,8 +38,24 @@ class BookDetailViewController: UIViewController,BookTabBarDelegate{
         self.BookTextView.text = self.BookObject!["description"] as? String
         self.view.addSubview(self.BookTextView)
         
+        self.isLove()
     }
 
+    /**
+     是否点赞初始化
+     */
+    func isLove(){
+        let query = AVQuery(className: "Love")
+        query.whereKey("user", equalTo: AVUser.currentUser())
+        query.whereKey("BookObject", equalTo: self.BookObject)
+        query.findObjectsInBackgroundWithBlock { (results, error) -> Void in
+            if results != nil && results.count != 0{
+                let btn = self.BookViewTabbar.viewWithTag(2) as! UIButton
+                btn.setImage(UIImage(named: "solidheart"), forState: .Normal)
+            }
+        }
+    }
+    
     /**
     *  初始化BookDetailView
     */
@@ -62,19 +83,114 @@ class BookDetailViewController: UIViewController,BookTabBarDelegate{
         
         self.BookTitleView.more.text = "70个喜欢.5次评论.12000次浏览"
     }
+    /**
+     InputViewDelegate
+     */
+    func publishButtonDidClick(button: UIButton!) {
+        ProgressHUD.show("")
+        
+        let object = AVObject(className: "discuss")
+        object.setObject(self.input.inputTextView?.text, forKey: "text")
+        object.setObject(AVUser.currentUser(), forKey: "user")
+        object.setObject(self.BookObject, forKey: "BookObject")
+        object.saveInBackgroundWithBlock { (success, error) -> Void in
+            if success {
+                self.input.inputTextView?.resignFirstResponder()
+                ProgressHUD.showSuccess("评论成功")
+            }else{
+                ProgressHUD.showError("评论失败")
+            }
+        }
+    }
     
+    func textViewHeightDidChange(height: CGFloat) {
+        self.input.height = height+10
+        self.input.bottom = SCREEN_HEIGHT-self.keyBoardHeight
+    }
+    
+    func keyboardWillHide(inputView: InputView!, keyboardHeight: CGFloat, animationDuration duration: NSTimeInterval, animationCurve: UIViewAnimationCurve) {
+        self.keyBoardHeight = keyboardHeight
+        UIView.animateWithDuration(duration, delay: 0, options: .BeginFromCurrentState, animations: { () -> Void in
+            self.input.bottom = SCREEN_HEIGHT+(self.input.height)
+            self.layView.alpha = 0
+            }) { (finish) -> Void in
+                self.layView.hidden = true
+        }
+    }
+    
+    func keyboardWillShow(inputView: InputView!, keyboardHeight: CGFloat, animationDuration duration: NSTimeInterval, animationCurve: UIViewAnimationCurve) {
+        self.keyBoardHeight = keyboardHeight
+        UIView.animateWithDuration(duration, delay: 0, options: .BeginFromCurrentState, animations: { () -> Void in
+            self.input.bottom = SCREEN_HEIGHT - keyboardHeight
+            self.layView.alpha = 0.2
+            }) { (finish) -> Void in
+                
+        }
+
+    }
+
     /**
     *  BookViewDelegate
     */
     func comment() {
-        print("comment")
+        if self.input == nil{
+            self.input = NSBundle.mainBundle().loadNibNamed("InputView", owner: self, options: nil).last as? InputView
+            self.input.frame = CGRectMake(0,SCREEN_HEIGHT-44,SCREEN_WIDTH,44)
+            self.input.delegate = self
+            self.view.addSubview(self.input)
+        }
+        if self.layView == nil{
+            self.layView = UIView(frame: self.view.frame)
+            self.layView.backgroundColor = UIColor.grayColor()
+            self.layView.alpha = 0
+            let tap = UITapGestureRecognizer(target: self, action: Selector("tapInputView"))
+            self.layView.addGestureRecognizer(tap)
+        }
+        self.view.insertSubview(self.layView, belowSubview: self.input)
+        self.layView.hidden = false
+        self.input.inputTextView?.becomeFirstResponder()
+    }
+    
+    func tapInputView(){
+        self.input.inputViewController?.resignFirstResponder()
     }
     
     func commentController() {
-        print("commentController")
+        let vc = commentViewController()
+        GeneralFactory.addTitleWithTitle(vc, title1: "", title2: "关闭")
+        self.presentViewController(vc, animated: true) { () -> Void in
+            
+        }
     }
-    func likeBook() {
-        print("likeBook")
+    func likeBook(btn: UIButton) {
+        btn.enabled = false
+        btn.setImage(UIImage(named: "redheart"), forState: .Normal)
+        
+        let query = AVQuery(className: "Love")
+        query.whereKey("user", equalTo: AVUser.currentUser())
+        query.whereKey("BookObject", equalTo: self.BookObject)
+        query.findObjectsInBackgroundWithBlock { (results, error) -> Void in
+            if results != nil && results.count != 0{
+                for var object in results{
+                    object = object as! AVObject
+                    object.deleteEventually()
+                }
+                btn.setImage(UIImage(named: "heart"), forState: .Normal)
+            }else{
+                let object = AVObject(className: "Love")
+                object.setObject(AVUser.currentUser(), forKey: "user")
+                object.setObject(self.BookObject, forKey: "BookObject")
+                object.saveInBackgroundWithBlock({ (success, error) -> Void in
+                    if success{
+                        btn.setImage(UIImage(named: "solidheart"), forState: .Normal)
+                        
+                    }else{
+                        ProgressHUD.showError("操作失败")
+                    }
+                })
+            }
+            btn.enabled = true
+        }
     }
     func sharAction() {
         print("sharAction")

@@ -109,6 +109,11 @@
 		38CA255A1DB5459200BB0019 /* page4.png in Resources */ = {isa = PBXBuildFile; fileRef = 38CA254D1DB5459200BB0019 /* page4.png */; };
 		38CA255B1DB5459200BB0019 /* red_point.png in Resources */ = {isa = PBXBuildFile; fileRef = 38CA254E1DB5459200BB0019 /* red_point.png */; };
 		38E107631DC08CFB00E33263 /* pushBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E107621DC08CFB00E33263 /* pushBook.swift */; };
+		38F0C9F31DDE5D17004502DB /* commentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F0C9F21DDE5D17004502DB /* commentViewController.swift */; };
+		38F0CA021DDE5D89004502DB /* discussCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F0CA011DDE5D89004502DB /* discussCell.swift */; };
+		38F0CA091DDE6568004502DB /* InputView.m in Sources */ = {isa = PBXBuildFile; fileRef = 38F0CA051DDE6568004502DB /* InputView.m */; };
+		38F0CA0A1DDE6568004502DB /* InputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 38F0CA061DDE6568004502DB /* InputView.xib */; };
+		38F0CA0B1DDE6568004502DB /* UIViewExt.m in Sources */ = {isa = PBXBuildFile; fileRef = 38F0CA081DDE6568004502DB /* UIViewExt.m */; };
 		38F9168A1DBE3153008D4E72 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38F916891DBE3153008D4E72 /* Login.storyboard */; };
 		38F9168C1DBE31C3008D4E72 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F9168B1DBE31C3008D4E72 /* LoginViewController.swift */; };
 		38F9168E1DBE31DE008D4E72 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F9168D1DBE31DE008D4E72 /* RegisterViewController.swift */; };
@@ -348,6 +353,13 @@
 		38CA254D1DB5459200BB0019 /* page4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = page4.png; sourceTree = "<group>"; };
 		38CA254E1DB5459200BB0019 /* red_point.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = red_point.png; sourceTree = "<group>"; };
 		38E107621DC08CFB00E33263 /* pushBook.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = pushBook.swift; sourceTree = "<group>"; };
+		38F0C9F21DDE5D17004502DB /* commentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = commentViewController.swift; sourceTree = "<group>"; };
+		38F0CA011DDE5D89004502DB /* discussCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = discussCell.swift; sourceTree = "<group>"; };
+		38F0CA041DDE6568004502DB /* InputView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputView.h; sourceTree = "<group>"; };
+		38F0CA051DDE6568004502DB /* InputView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InputView.m; sourceTree = "<group>"; };
+		38F0CA061DDE6568004502DB /* InputView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InputView.xib; sourceTree = "<group>"; };
+		38F0CA071DDE6568004502DB /* UIViewExt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIViewExt.h; sourceTree = "<group>"; };
+		38F0CA081DDE6568004502DB /* UIViewExt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIViewExt.m; sourceTree = "<group>"; };
 		38F916891DBE3153008D4E72 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		38F9168B1DBE31C3008D4E72 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		38F9168D1DBE31DE008D4E72 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
@@ -804,6 +816,7 @@
 		38CA25371DB5459200BB0019 /* ThirdKit */ = {
 			isa = PBXGroup;
 			children = (
+				38F0CA031DDE6568004502DB /* InputView */,
 				3880FF1B1DD0B8F7007C3715 /* MJRefresh */,
 				3880FEDB1DD0A5F5007C3715 /* SDWebImage */,
 				385A2D5E1DBF41C4006DD2F4 /* ProgressHUD */,
@@ -828,6 +841,18 @@
 				38CA253E1DB5459200BB0019 /* NSString+TextDirectionality.m */,
 			);
 			path = JVFloatLabeledTextField;
+			sourceTree = "<group>";
+		};
+		38F0CA031DDE6568004502DB /* InputView */ = {
+			isa = PBXGroup;
+			children = (
+				38F0CA041DDE6568004502DB /* InputView.h */,
+				38F0CA051DDE6568004502DB /* InputView.m */,
+				38F0CA061DDE6568004502DB /* InputView.xib */,
+				38F0CA071DDE6568004502DB /* UIViewExt.h */,
+				38F0CA081DDE6568004502DB /* UIViewExt.m */,
+			);
+			path = InputView;
 			sourceTree = "<group>";
 		};
 		38F9167D1DBE3128008D4E72 /* Login */ = {
@@ -862,6 +887,7 @@
 			children = (
 				38FE2E5A1DD4C8B600D1DF4B /* BookDetailView.swift */,
 				38FE2E5C1DD4CA2E00D1DF4B /* BookTabBar.swift */,
+				38F0CA011DDE5D89004502DB /* discussCell.swift */,
 			);
 			name = V;
 			sourceTree = "<group>";
@@ -870,6 +896,7 @@
 			isa = PBXGroup;
 			children = (
 				38FE2E581DD4C7BD00D1DF4B /* BookDetailViewController.swift */,
+				38F0C9F21DDE5D17004502DB /* commentViewController.swift */,
 			);
 			name = C;
 			sourceTree = "<group>";
@@ -1037,6 +1064,7 @@
 				384A16881DBB5A6800DB6F22 /* social-icon.png in Resources */,
 				384A168B1DBB5A6800DB6F22 /* star-icon@2x.png in Resources */,
 				38CA25551DB5459200BB0019 /* Icon2.png in Resources */,
+				38F0CA0A1DDE6568004502DB /* InputView.xib in Resources */,
 				38CA25591DB5459200BB0019 /* page3.png in Resources */,
 				384A167F1DBB5A6800DB6F22 /* segmented-bg-pressed-left@2x.png in Resources */,
 				384A16851DBB5A6800DB6F22 /* segmented-separator@2x.png in Resources */,
@@ -1075,6 +1103,7 @@
 				3810D0F61DAFDFEF00E11B3D /* rankViewController.swift in Sources */,
 				3880FF4A1DD0B8F7007C3715 /* MJRefreshComponent.m in Sources */,
 				3880FF4D1DD0B8F7007C3715 /* MJRefreshAutoGifFooter.m in Sources */,
+				38F0C9F31DDE5D17004502DB /* commentViewController.swift in Sources */,
 				3880FF4F1DD0B8F7007C3715 /* MJRefreshAutoStateFooter.m in Sources */,
 				38CA253F1DB5459200BB0019 /* JVFloatLabeledTextField.m in Sources */,
 				38CA252A1DB5459200BB0019 /* BookTitleView.swift in Sources */,
@@ -1098,9 +1127,11 @@
 				3880FF591DD0B8F7007C3715 /* UIScrollView+MJRefresh.m in Sources */,
 				3880FF4E1DD0B8F7007C3715 /* MJRefreshAutoNormalFooter.m in Sources */,
 				38FE2E591DD4C7BD00D1DF4B /* BookDetailViewController.swift in Sources */,
+				38F0CA0B1DDE6568004502DB /* UIViewExt.m in Sources */,
 				3880FF071DD0A5F5007C3715 /* UIImage+GIF.m in Sources */,
 				38F9168C1DBE31C3008D4E72 /* LoginViewController.swift in Sources */,
 				3880FF551DD0B8F7007C3715 /* MJRefreshStateHeader.m in Sources */,
+				38F0CA091DDE6568004502DB /* InputView.m in Sources */,
 				38CA25411DB5459200BB0019 /* NSString+TextDirectionality.m in Sources */,
 				385A2D631DBF41C4006DD2F4 /* ProgressHUD.m in Sources */,
 				3810D0FB1DAFE03600E11B3D /* pushViewController.swift in Sources */,
@@ -1121,6 +1152,7 @@
 				3880FF0B1DD0A5F5007C3715 /* UIImageView+WebCache.m in Sources */,
 				3880FF021DD0A5F5007C3715 /* SDWebImageDownloader.m in Sources */,
 				384A165B1DBB247200DB6F22 /* LDXScore.m in Sources */,
+				38F0CA021DDE5D89004502DB /* discussCell.swift in Sources */,
 				3880FF191DD0A6B4007C3715 /* pushBook_Cell.swift in Sources */,
 				3880FEFD1DD0A5F5007C3715 /* MKAnnotationView+WebCache.m in Sources */,
 				3810D0FF1DAFE04D00E11B3D /* moreViewController.swift in Sources */,
