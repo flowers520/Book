@@ -19,7 +19,6 @@ class BookDetailViewController: UIViewController,BookTabBarDelegate,InputViewDel
     var layView: UIView!
     var keyBoardHeight: CGFloat = 0.0
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.whiteColor()
@@ -97,6 +96,7 @@ class BookDetailViewController: UIViewController,BookTabBarDelegate,InputViewDel
             if success {
                 self.input.inputTextView?.resignFirstResponder()
                 ProgressHUD.showSuccess("评论成功")
+                
             }else{
                 ProgressHUD.showError("评论失败")
             }
@@ -158,6 +158,8 @@ class BookDetailViewController: UIViewController,BookTabBarDelegate,InputViewDel
     func commentController() {
         let vc = commentViewController()
         GeneralFactory.addTitleWithTitle(vc, title1: "", title2: "关闭")
+        vc.BookObject = self.BookObject
+        vc.tableView.mj_header.beginRefreshing()
         self.presentViewController(vc, animated: true) { () -> Void in
             
         }

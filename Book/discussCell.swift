@@ -29,6 +29,10 @@ class discussCell: UITableViewCell {
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
+
+    }
+
+    func initFrame(){
         for view in self.contentView.subviews{
             view.removeFromSuperview()
         }
@@ -52,7 +56,6 @@ class discussCell: UITableViewCell {
         self.detailLabel.numberOfLines = 0
         self.contentView.addSubview(self.detailLabel)
     }
-
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
