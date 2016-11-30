@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BookDetailViewController: UIViewController,BookTabBarDelegate,InputViewDelegate{
+class BookDetailViewController: UIViewController,BookTabBarDelegate,InputViewDelegate,HZPhotoBrowserDelegate{
 
     var BookObject:AVObject!
     var BookTitleView:BookDetailView!
@@ -80,7 +80,18 @@ class BookDetailViewController: UIViewController,BookTabBarDelegate,InputViewDel
         let scoreString = self.BookObject["score"] as! String
         self.BookTitleView.score.show_star = Int(scoreString)!
         
-        self.BookTitleView.more.text = "70个喜欢.5次评论.12000次浏览"
+        let scanNumber = self.BookObject["scanNumber"] as! NSNumber
+        let loveNumber = self.BookObject["loveNumber"] as! NSNumber
+        let discussNumber = self.BookObject["discussNumber"] as! NSNumber
+        
+        self.BookTitleView.more.text = (loveNumber.stringValue)+"个喜欢,"+(discussNumber.stringValue)+"次评论,"+(scanNumber.stringValue)+"次浏览过."
+        
+        let tap = UITapGestureRecognizer(target: self, action: Selector("photoBrowser"))
+        self.BookTitleView.cover.addGestureRecognizer(tap)
+        self.BookTitleView.cover.userInteractionEnabled = true
+        
+        self.BookObject.incrementKey("scanNumber")
+        self.BookObject.saveInBackground()
     }
     /**
      InputViewDelegate
@@ -107,6 +118,8 @@ class BookDetailViewController: UIViewController,BookTabBarDelegate,InputViewDel
         self.input.height = height+10
         self.input.bottom = SCREEN_HEIGHT-self.keyBoardHeight
     }
+
+
     
     func keyboardWillHide(inputView: InputView!, keyboardHeight: CGFloat, animationDuration duration: NSTimeInterval, animationCurve: UIViewAnimationCurve) {
         self.keyBoardHeight = keyboardHeight
@@ -115,6 +128,7 @@ class BookDetailViewController: UIViewController,BookTabBarDelegate,InputViewDel
             self.layView.alpha = 0
             }) { (finish) -> Void in
                 self.layView.hidden = true
+                
         }
     }
     
@@ -178,6 +192,9 @@ class BookDetailViewController: UIViewController,BookTabBarDelegate,InputViewDel
                     object.deleteEventually()
                 }
                 btn.setImage(UIImage(named: "heart"), forState: .Normal)
+                
+                self.BookObject.incrementKey("loveNumber", byAmount: NSNumber(int: -1))
+                self.BookObject.saveInBackground()
             }else{
                 let object = AVObject(className: "Love")
                 object.setObject(AVUser.currentUser(), forKey: "user")
@@ -186,6 +203,8 @@ class BookDetailViewController: UIViewController,BookTabBarDelegate,InputViewDel
                     if success{
                         btn.setImage(UIImage(named: "solidheart"), forState: .Normal)
                         
+                        self.BookObject.incrementKey("loveNumber", byAmount: NSNumber(int: 1))
+                        self.BookObject.saveInBackground()
                     }else{
                         ProgressHUD.showError("操作失败")
                     }
@@ -197,6 +216,23 @@ class BookDetailViewController: UIViewController,BookTabBarDelegate,InputViewDel
     func sharAction() {
         print("sharAction")
     }
-
+    /**
+    *  PhotoBrowser
+    */
+    func photoBrowser(){
+        let photoBrowser = HZPhotoBrowser()
+        photoBrowser.imageCount = 1
+        photoBrowser.currentImageIndex = 0
+        photoBrowser.delegate = self
+        photoBrowser.show()
+    }
+    
+    func photoBrowser(browser: HZPhotoBrowser!, placeholderImageForIndex index: Int) -> UIImage! {
+        return self.BookTitleView.cover.image
+    }
+    func photoBrowser(browser: HZPhotoBrowser!, highQualityImageURLForIndex index: Int) -> NSURL! {
+        let coverFile = self.BookObject["cover"] as! AVFile
+        return NSURL(string: coverFile.url)
+    }
 
 }

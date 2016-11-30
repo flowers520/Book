@@ -10,8 +10,8 @@
 import UIKit
 
 class pushBook: NSObject {
-    static func pushBookInBack(dict:NSDictionary){
-        let object = AVObject(className: "Book")
+    static func pushBookInBack(dict:NSDictionary, object:AVObject){
+//        let object = AVObject(className: "Book")
         /**
         *              
         "BookName":(self.BookTitle?.BooKName?.text)!,

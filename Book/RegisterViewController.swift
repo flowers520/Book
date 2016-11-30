@@ -48,6 +48,17 @@ class RegisterViewController: UIViewController {
             
         }
     }
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        for touch: AnyObject in touches{
+            let t:UITouch = touch as! UITouch
+            if(t.tapCount == 1){
+                email.resignFirstResponder()
+                password.resignFirstResponder()
+                username.resignFirstResponder()
+            }
+        }
+    }
+    
     /**
      注册键盘出现和消失
      */

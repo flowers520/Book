@@ -10,3 +10,5 @@
 #import "MJRefresh.h"
 #import "UIImageView+WebCache.h"
 #import "InputView.h"
+#import "SWTableViewCell.h"
+#import "HZPhotoBrowser.h"

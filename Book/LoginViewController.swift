@@ -40,7 +40,17 @@ class LoginViewController: UIViewController {
             }
         }
     }
-
+    
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        for touch: AnyObject in touches{
+            let t: UITouch = touch as! UITouch
+            if(t.tapCount == 1){
+                username.resignFirstResponder()
+                password.resignFirstResponder()
+            }
+        }
+    }
+    
     /**
      注册键盘出现和消失
      */

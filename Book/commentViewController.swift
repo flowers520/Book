@@ -84,7 +84,7 @@ class commentViewController: UIViewController,UITableViewDelegate,UITableViewDat
         
         let user = object["user"] as! AVUser
         cell.nameLabel.text = user.username
-        cell.avatarImage.image = UIImage(named: "Avatar")
+        cell.avatarImage.image = UIImage(named: "flowers520")
         
         let date = object["createdAt"] as! NSDate
         let format = NSDateFormatter()
@@ -156,11 +156,18 @@ class commentViewController: UIViewController,UITableViewDelegate,UITableViewDat
                 self.input.inputTextView?.resignFirstResponder()
                 ProgressHUD.showSuccess("评论成功")
                 
+                self.BookObject.incrementKey("discussNumber")
+                self.BookObject.saveInBackground()
+                
             }else{
                 ProgressHUD.showError("评论失败")
             }
         }
     }
+    
+
+
+    
     func keyboardWillHide(inputView: InputView!, keyboardHeight: CGFloat, animationDuration duration: NSTimeInterval, animationCurve: UIViewAnimationCurve) {
         UIView.animateWithDuration(duration, delay: 0, options: .BeginFromCurrentState, animations: { () -> Void in
             self.layView.alpha = 0
@@ -177,7 +184,7 @@ class commentViewController: UIViewController,UITableViewDelegate,UITableViewDat
         self.keyBoardHeight = keyboardHeight
         self.layView.hidden = false
         UIView.animateWithDuration(duration, delay: 0, options: .BeginFromCurrentState, animations: { () -> Void in
-            self.layView.alpha = 0
+            self.layView.alpha = 0.2
             self.input.bottom = SCREEN_HEIGHT-keyboardHeight
             }) { (finish) -> Void in
                 

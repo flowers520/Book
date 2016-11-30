@@ -19,6 +19,10 @@ class pushNewBookController: UIViewController ,BookTitleDelegate,PhotoPickerDele
     var type="文学"
     var detailType="小说"
     var Book_Description=""
+/// 编辑
+    var bookObject:AVObject!
+    var fixType: String!
+    
     
     /**
      表示是否显示星星
@@ -60,11 +64,50 @@ class pushNewBookController: UIViewController ,BookTitleDelegate,PhotoPickerDele
     }
     
     /**
+     编辑
+     */
+    func fixBook(){
+        if self.fixType == "fix"{
+            self.BookTitle?.BooKName?.text = self.bookObject["BookName"] as! String
+            self.BookTitle?.BookEdite?.text = self.bookObject["BookEditor"] as! String
+            let coverFile = self.bookObject["cover"] as! AVFile
+            coverFile.getDataInBackgroundWithBlock({ (data, error) -> Void in
+                self.BookTitle?.BookCover?.setImage(UIImage(data: data), forState: .Normal)
+            })
+            self.Book_Title = self.bookObject["title"] as! String
+            self.type = self.bookObject["type"] as! String
+            self.detailType = self.bookObject["detailType"] as! String
+            self.Book_Description = self.bookObject["description"] as! String
+            self.Score?.show_star = (Int)(self.bookObject["score"] as! String)!
+            if self.Book_Description != ""{
+                self.titleArray.append("")
+            }
+        }
+    }
+    
+    /**
      析构函数
      */
     deinit{
         print("pushNewBookController reallse")
         NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+    /**
+     pushCallBack
+     */
+    func pushCallBack(notification: NSNotification){
+        let dict = notification.userInfo
+        if String(dict!["success"]) == "true"{
+            if self.fixType == "fix"{
+                ProgressHUD.showSuccess("修改成功")
+            }else{
+                ProgressHUD.showSuccess("上传成功")
+            }
+            self.dismissViewControllerAnimated(true, completion: nil)
+        }else{
+            ProgressHUD.showSuccess("上传失败")
+        }
+        
     }
     /**
      pushBookNotifition
@@ -93,7 +136,7 @@ class pushNewBookController: UIViewController ,BookTitleDelegate,PhotoPickerDele
         PhotoPickerDelegate
     */
     func getImageFramePicker(image: UIImage) {
-        let CroVC = VPImageCropperViewController(image: image, cropFrame: CGRectMake(0, 100, SCREEN_WIDTH, SCREEN_HEIGHT), limitScaleRatio: 3)
+        let CroVC = VPImageCropperViewController(image: image, cropFrame: CGRectMake(0, 100, SCREEN_WIDTH, SCREEN_HEIGHT*1.273), limitScaleRatio: 3)
         CroVC.delegate = self
         self.presentViewController(CroVC, animated: true, completion: nil)
     }
@@ -117,7 +160,14 @@ class pushNewBookController: UIViewController ,BookTitleDelegate,PhotoPickerDele
         print("///////\(String((self.Score?.show_score)!))")
         
         ProgressHUD.show("")
-        pushBook.pushBookInBack(dict)
+        if self.fixType == "fix"{
+            pushBook.pushBookInBack(dict, object: self.bookObject!)
+        }else{
+            let object = AVObject(className: "Book")
+            pushBook.pushBookInBack(dict, object: object)
+        }
+        
+        
     }
 
     /*
