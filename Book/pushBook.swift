@@ -11,25 +11,14 @@ import UIKit
 
 class pushBook: NSObject {
     static func pushBookInBack(dict:NSDictionary, object:AVObject){
-//        let object = AVObject(className: "Book")
-        /**
-        *              
-        "BookName":(self.BookTitle?.BooKName?.text)!,
-        "BookEditor":(self.BookTitle?.BookEdite?.text)!,
-        "BookCover":(self.BookTitle?.BookCover?.currentImage)!,
-        "title":self.Book_Title,
-        "score":String((self.Score?.show_score)!),
-        "type":self.type,
-        "detaileType":self.detailType,
-        "descrition":self.Book_Description
-        */
+
         object.setObject(dict["BookName"], forKey: "BookName")
         object.setObject(dict["BookEditor"], forKey: "BookEditor")
         object.setObject(dict["title"], forKey: "title")
         object.setObject(dict["score"], forKey: "score")
         object.setObject(dict["type"], forKey: "type")
-        object.setObject(dict["detaileType"], forKey: "detaileType")
-        object.setObject(dict["descrition"], forKey: "descrition")
+        object.setObject(dict["detailType"], forKey: "detailType")
+        object.setObject(dict["description"], forKey: "description")
         object.setObject(AVUser.currentUser(), forKey: "user")
         let image = dict["BookCover"] as? UIImage
         let coverFile = AVFile(data: UIImagePNGRepresentation(image!))

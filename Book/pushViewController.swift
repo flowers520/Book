@@ -195,6 +195,7 @@ class pushViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         query.whereKey("user", equalTo: AVUser.currentUser())
         query.findObjectsInBackgroundWithBlock { (results, error) -> Void in
             self.tableView.mj_footer.endRefreshing()
+            self.dataArray.removeAllObjects()
             self.dataArray.addObjectsFromArray(results)
             self.tableView.reloadData()
         }

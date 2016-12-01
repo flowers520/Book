@@ -108,6 +108,8 @@ class BookDetailViewController: UIViewController,BookTabBarDelegate,InputViewDel
                 self.input.inputTextView?.resignFirstResponder()
                 ProgressHUD.showSuccess("评论成功")
                 
+                self.BookObject.incrementKey("discussNumber")
+                self.BookObject.saveInBackground()                
             }else{
                 ProgressHUD.showError("评论失败")
             }

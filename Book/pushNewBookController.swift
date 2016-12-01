@@ -21,7 +21,7 @@ class pushNewBookController: UIViewController ,BookTitleDelegate,PhotoPickerDele
     var Book_Description=""
 /// 编辑
     var bookObject:AVObject!
-    var fixType: String!
+    var fixType: String = ""
     
     
     /**
@@ -154,8 +154,8 @@ class pushNewBookController: UIViewController ,BookTitleDelegate,PhotoPickerDele
             "title":self.Book_Title,
             "score":String((self.Score?.show_star)!),
             "type":self.type,
-            "detaileType":self.detailType,
-            "descrition":self.Book_Description
+            "detailType":self.detailType,
+            "description":self.Book_Description
         ]
         print("///////\(String((self.Score?.show_score)!))")
         
@@ -166,8 +166,7 @@ class pushNewBookController: UIViewController ,BookTitleDelegate,PhotoPickerDele
             let object = AVObject(className: "Book")
             pushBook.pushBookInBack(dict, object: object)
         }
-        
-        
+
     }
 
     /*
