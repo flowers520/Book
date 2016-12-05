@@ -206,6 +206,17 @@ class pushNewBookController: UIViewController ,BookTitleDelegate,PhotoPickerDele
         if(indexPath.row != 1){
             cell.accessoryType = .DisclosureIndicator
         }
+        
+        //右边箭头 有星星的时候
+        if self.showScore{
+            if indexPath.row == 1{
+                cell.accessoryType = .None
+            }
+            if indexPath.row == 2{
+                cell.accessoryType = .None
+            }
+
+        }
         cell.textLabel?.text = self.titleArray[indexPath.row]
         cell.textLabel?.font = UIFont(name: MY_FONT, size: 15)
         cell.detailTextLabel?.font = UIFont(name: MY_FONT, size: 13)
@@ -219,6 +230,8 @@ class pushNewBookController: UIViewController ,BookTitleDelegate,PhotoPickerDele
         case 0:
             cell.detailTextLabel?.text = self.Book_Title
             break
+//        case 1:
+//            cell.detailTextLabel?.text = String((self.Score?.show_star)!)+"颗星"
         case 2:
             cell.detailTextLabel?.text = self.type+"->"+self.detailType
             break
@@ -256,25 +269,51 @@ class pushNewBookController: UIViewController ,BookTitleDelegate,PhotoPickerDele
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.tableView?.deselectRowAtIndexPath(indexPath, animated: true)
         var row = indexPath.row
+//        print("row:---> \(row)")
         if self.showScore && row==1{
             row -= 1
+//            print("showscore:\(showScore), row-->\(row)")
+//            cell.detailTextLabel?.text = String((self.Score?.show_star)!)+"颗星"
+//            self.tableView!.reloadData()
         }
-        switch indexPath.row{
-        case 0:
-            self.tableViewSelectTitle()
-            break
-        case 1:
-            self.tableViewSelectScore()
-            break
-        case 2:
-            self.tableViewSelectType()
-            break
-        case 3:
-            self.tableviewSelectDescription()
-            break
-        default:
-            break
+        if self.showScore{
+            switch indexPath.row{
+            case 0:
+                self.tableViewSelectTitle()
+                break
+            case 1:
+                self.tableViewSelectScore()
+                break
+            case 3:
+                self.tableViewSelectType()
+                break
+            case 4:
+                self.tableviewSelectDescription()
+                break
+            default:
+                break
+            }
+
+        }else{
+            switch indexPath.row{
+            case 0:
+                self.tableViewSelectTitle()
+                break
+            case 1:
+                self.tableViewSelectScore()
+                break
+            case 2:
+                self.tableViewSelectType()
+                break
+            case 3:
+                self.tableviewSelectDescription()
+                break
+            default:
+                break
+            }
         }
+
+
     }
      
     /*

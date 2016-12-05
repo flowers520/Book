@@ -196,7 +196,7 @@ class BookDetailViewController: UIViewController,BookTabBarDelegate,InputViewDel
     }
     
     func tapInputView(){
-        self.input.inputViewController?.resignFirstResponder()
+        self.input.inputTextView?.resignFirstResponder()
     }
     
     func commentController() {

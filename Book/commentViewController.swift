@@ -137,6 +137,11 @@ class commentViewController: UIViewController,UITableViewDelegate,UITableViewDat
             self.tableView.reloadData()
         }
     }
+
+    
+
+
+    
     /**
     *  InputViewDelegate
     */
@@ -189,5 +194,11 @@ class commentViewController: UIViewController,UITableViewDelegate,UITableViewDat
             }) { (finish) -> Void in
                 
         }
+        let tap = UITapGestureRecognizer(target: self, action: Selector("tapInputView"))
+        self.layView.addGestureRecognizer(tap)
+
+    }
+    func tapInputView(){
+        self.input.inputTextView?.resignFirstResponder()
     }
 }
