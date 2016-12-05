@@ -18,7 +18,7 @@ protocol BookTabBarDelegate:class{
 class BookTabBar: UIView {
 
     //声明为弱引用
-    weak var delegate: BookTabBarDelegate!
+    weak var delegate: BookTabBarDelegate?
     
     override init(frame: CGRect){
         super.init(frame:frame)
@@ -56,16 +56,16 @@ class BookTabBar: UIView {
     func BookTabbarAction(btn: UIButton){
         switch(btn.tag){
         case 0:
-            delegate.comment()
+            delegate!.comment()
             break
         case 1:
-            delegate.commentController()
+            delegate!.commentController()
             break
         case 2:
-            delegate.likeBook(btn)
+            delegate!.likeBook(btn)
             break
         case 3:
-            delegate.sharAction()
+            delegate!.sharAction()
             break
         default:
             break
