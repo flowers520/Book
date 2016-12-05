@@ -20,7 +20,7 @@ class pushNewBookController: UIViewController ,BookTitleDelegate,PhotoPickerDele
     var detailType="小说"
     var Book_Description=""
 /// 编辑
-    var bookObject:AVObject!
+    var bookObject:AVObject?
     var fixType: String = ""
     
     
@@ -68,17 +68,17 @@ class pushNewBookController: UIViewController ,BookTitleDelegate,PhotoPickerDele
      */
     func fixBook(){
         if self.fixType == "fix"{
-            self.BookTitle?.BooKName?.text = self.bookObject["BookName"] as! String
-            self.BookTitle?.BookEdite?.text = self.bookObject["BookEditor"] as! String
-            let coverFile = self.bookObject["cover"] as! AVFile
+            self.BookTitle?.BooKName?.text = self.bookObject!["BookName"] as? String
+            self.BookTitle?.BookEdite?.text = self.bookObject!["BookEditor"] as? String
+            let coverFile = self.bookObject!["cover"] as! AVFile
             coverFile.getDataInBackgroundWithBlock({ (data, error) -> Void in
                 self.BookTitle?.BookCover?.setImage(UIImage(data: data), forState: .Normal)
             })
-            self.Book_Title = self.bookObject["title"] as! String
-            self.type = self.bookObject["type"] as! String
-            self.detailType = self.bookObject["detailType"] as! String
-            self.Book_Description = self.bookObject["description"] as! String
-            self.Score?.show_star = (Int)(self.bookObject["score"] as! String)!
+            self.Book_Title = self.bookObject!["title"] as! String
+            self.type = self.bookObject!["type"] as! String
+            self.detailType = self.bookObject!["detailType"] as! String
+            self.Book_Description = self.bookObject!["description"] as! String
+            self.Score?.show_star = (Int)(self.bookObject!["score"] as! String)!
             if self.Book_Description != ""{
                 self.titleArray.append("")
             }
@@ -95,20 +95,20 @@ class pushNewBookController: UIViewController ,BookTitleDelegate,PhotoPickerDele
     /**
      pushCallBack
      */
-    func pushCallBack(notification: NSNotification){
-        let dict = notification.userInfo
-        if String(dict!["success"]) == "true"{
-            if self.fixType == "fix"{
-                ProgressHUD.showSuccess("修改成功")
-            }else{
-                ProgressHUD.showSuccess("上传成功")
-            }
-            self.dismissViewControllerAnimated(true, completion: nil)
-        }else{
-            ProgressHUD.showSuccess("上传失败")
-        }
-        
-    }
+//    func pushCallBack(notification: NSNotification){
+//        let dict = notification.userInfo
+//        if String(dict!["success"]) == "true"{
+//            if self.fixType == "fix"{
+//                ProgressHUD.showSuccess("修改成功")
+//            }else{
+//                ProgressHUD.showSuccess("上传成功")
+//            }
+//            self.dismissViewControllerAnimated(true, completion: nil)
+//        }else{
+//            ProgressHUD.showSuccess("上传失败")
+//        }
+//        
+//    }
     /**
      pushBookNotifition
      */
@@ -116,7 +116,11 @@ class pushNewBookController: UIViewController ,BookTitleDelegate,PhotoPickerDele
         let dict = notifition.userInfo
         print("\(dict!["success"]!)..................")
         if String(dict!["success"]!) == "true"{
-            ProgressHUD.showSuccess("上传成功")
+           if self.fixType == "fix"{
+                ProgressHUD.showSuccess("修改成功")
+            }else{
+                ProgressHUD.showSuccess("上传成功")
+            }
             self.dismissViewControllerAnimated(true, completion: nil)
         }else{
             ProgressHUD.showError("上传失败")
@@ -318,10 +322,13 @@ class pushNewBookController: UIViewController ,BookTitleDelegate,PhotoPickerDele
         
         vc.type = self.type
         vc.detailType = self.detailType
+        
+        weak var wself = self
+        
         vc.callBack = ({(type:String,detailType:String)->Void in
-            self.type = type
-            self.detailType = detailType
-            self.tableView?.reloadData()
+            wself!.type = type
+            wself!.detailType = detailType
+            wself!.tableView?.reloadData()
         })
         
         self.presentViewController(vc, animated: true, completion: nil)

@@ -38,6 +38,7 @@ class pushViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     
     override func viewDidAppear(animated: Bool) {
         self.navigationView.hidden = false
+        headerRefresh()
     }
     
     override func viewDidDisappear(animated: Bool) {
@@ -105,7 +106,7 @@ class pushViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         btn1.setTitle("编辑", forState: .Normal)
         
         let btn2 = UIButton(frame: CGRectMake(0,0,88,88))
-        btn2.backgroundColor = UIColor.orangeColor()
+        btn2.backgroundColor = UIColor.redColor()
         btn2.setTitle("删除", forState: .Normal)
         
         return [btn1,btn2]

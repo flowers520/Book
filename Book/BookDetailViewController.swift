@@ -38,8 +38,38 @@ class BookDetailViewController: UIViewController,BookTabBarDelegate,InputViewDel
         self.view.addSubview(self.BookTextView)
         
         self.isLove()
+        
+        //输出线程操作 查看
+        print(NSThread.currentThread())
+        
+        //子线程操作复杂的操作不会影响主界面
+        dispatch_async(dispatch_get_global_queue(0, 0)) { () -> Void in
+//            //死循环代替复杂操作
+//            while true {
+//            
+//            }
+            print(NSThread.currentThread())
+        }
+        
     }
 
+    deinit{
+        print("BookDetailViewController release")
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        if self.input != nil{
+            NSNotificationCenter.defaultCenter().removeObserver(self.input!, name: "keyboardWillShowNotification", object: nil)
+            NSNotificationCenter.defaultCenter().addObserver(self.input!, selector: Selector("keyboardWillShowNotification:"), name: UIKeyboardWillShowNotification, object: nil)
+        }
+
+    }
+    override func viewDidDisappear(animated: Bool) {
+        if self.input != nil{
+            NSNotificationCenter.defaultCenter().removeObserver(self.input!, name: "keyboardWillShowNotification", object: nil)
+        }
+    }
     /**
      是否点赞初始化
      */
@@ -90,8 +120,7 @@ class BookDetailViewController: UIViewController,BookTabBarDelegate,InputViewDel
         self.BookTitleView.cover.addGestureRecognizer(tap)
         self.BookTitleView.cover.userInteractionEnabled = true
         
-        self.BookObject.incrementKey("scanNumber")
-        self.BookObject.saveInBackground()
+        GeneralFactory.addIncrementKey(self.BookObject!, type: .scan)
     }
     /**
      InputViewDelegate
@@ -108,8 +137,7 @@ class BookDetailViewController: UIViewController,BookTabBarDelegate,InputViewDel
                 self.input.inputTextView?.resignFirstResponder()
                 ProgressHUD.showSuccess("评论成功")
                 
-                self.BookObject.incrementKey("discussNumber")
-                self.BookObject.saveInBackground()                
+                GeneralFactory.addIncrementKey(self.BookObject!, type: .discuss)
             }else{
                 ProgressHUD.showError("评论失败")
             }
@@ -195,8 +223,8 @@ class BookDetailViewController: UIViewController,BookTabBarDelegate,InputViewDel
                 }
                 btn.setImage(UIImage(named: "heart"), forState: .Normal)
                 
-                self.BookObject.incrementKey("loveNumber", byAmount: NSNumber(int: -1))
-                self.BookObject.saveInBackground()
+                GeneralFactory.addIncrementKey(self.BookObject!, type: .cancelLove)
+
             }else{
                 let object = AVObject(className: "Love")
                 object.setObject(AVUser.currentUser(), forKey: "user")
@@ -205,8 +233,7 @@ class BookDetailViewController: UIViewController,BookTabBarDelegate,InputViewDel
                     if success{
                         btn.setImage(UIImage(named: "solidheart"), forState: .Normal)
                         
-                        self.BookObject.incrementKey("loveNumber", byAmount: NSNumber(int: 1))
-                        self.BookObject.saveInBackground()
+                        GeneralFactory.addIncrementKey(self.BookObject!, type: .love)
                     }else{
                         ProgressHUD.showError("操作失败")
                     }
@@ -216,7 +243,39 @@ class BookDetailViewController: UIViewController,BookTabBarDelegate,InputViewDel
         }
     }
     func sharAction() {
-        print("sharAction")
+        let shareParams = NSMutableDictionary()
+        shareParams.SSDKSetupShareParamsByText("分享内容", images: self.BookTitleView.cover.image, url: NSURL(string: "http://www.baidu.com") , title: "标题", type: SSDKContentType.Image)
+//        ShareSDK.share(.TypeWechat, parameters: shareParams) { (state, userData, contentEntity, error) -> Void in
+//            switch state{
+//            case SSDKResponseState.Success:
+//                ProgressHUD.showSuccess("分享成功")
+//                break
+//            case SSDKResponseState.Fail:
+//                ProgressHUD.showError("分享失败")
+//                break
+//            case SSDKResponseState.Cancel:
+//                ProgressHUD.showError("已取消分享")
+//                break
+//            default:
+//                break
+//            }
+//        }
+        
+        ShareSDK.showShareActionSheet(self.view, items: [22], shareParams: shareParams) { (state, platForm, userdata, contentEntity, error, success) -> Void in
+            switch state{
+            case SSDKResponseState.Success:
+                ProgressHUD.showSuccess("分享成功")
+                break
+            case SSDKResponseState.Fail:
+                ProgressHUD.showError("分享失败")
+                break
+            case SSDKResponseState.Cancel:
+                ProgressHUD.showError("已取消分享")
+                break
+            default:
+                break
+            }
+        }
     }
     /**
     *  PhotoBrowser

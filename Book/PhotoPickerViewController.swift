@@ -16,7 +16,7 @@ class PhotoPickerViewController: UIViewController,UIImagePickerControllerDelegat
 
     var alert: UIAlertController?
     var picker: UIImagePickerController?
-    var delegate: PhotoPickerDelegate!
+    var delegate: PhotoPickerDelegate?
     
     init(){
         super.init(nibName: nil, bundle: nil)
@@ -101,7 +101,7 @@ class PhotoPickerViewController: UIViewController,UIImagePickerControllerDelegat
         let image = info[UIImagePickerControllerOriginalImage] as! UIImage
         self.picker?.dismissViewControllerAnimated(true, completion: { () -> Void in
             self.dismissViewControllerAnimated(true, completion: { () -> Void in
-                self.delegate.getImageFramePicker(image)
+                self.delegate!.getImageFramePicker(image)
             })
         })
     }

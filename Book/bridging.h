@@ -12,3 +12,11 @@
 #import "InputView.h"
 #import "SWTableViewCell.h"
 #import "HZPhotoBrowser.h"
+#import <ShareSDK/ShareSDK.h>
+#import <ShareSDKConnector/ShareSDKConnector.h>
+#import <TencentOpenAPI/TencentOAuth.h>
+#import <TencentOpenAPI/QQApiInterface.h>
+#import "WXApi.h"
+#import "WeiboSDK.h"
+#import "ShareSDKUI/ShareSDK+SSUI.h"
+#import "ShareSDKUI/SSUIShareActionSheetStyle.h"

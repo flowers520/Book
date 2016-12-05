@@ -19,6 +19,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         /**
+        设置shareSDK
+        */
+        ShareSDK.registerApp("19875141bdab0", activePlatforms: [SSDKPlatformType.SubTypeWechatSession.rawValue,SSDKPlatformType.SubTypeWechatTimeline.rawValue], onImport: { (platForm) -> Void in
+            switch platForm {
+            case SSDKPlatformType.TypeWechat:
+                ShareSDKConnector.connectWeChat(WXApi.classForCoder())
+                break
+            default:
+                break
+            }
+            }) {(platfrom, appInfo) -> Void in
+                switch platfrom{
+                case SSDKPlatformType.TypeWechat:
+                    appInfo.SSDKSetupWeChatByAppId("wx22eb0289071f44c9", appSecret: "2107f9700c2a6f70b4930f39d562dc8a")
+                default:
+                    break
+                }
+                
+        }
+        /**
+        设置leanCloud
+        */
+        
+        AVOSCloud.setApplicationId("B3YNgJ9mauaURLtk4GGu7Tsp-gzGzoHsz", clientKey: "Be5w6l66NRfuSYsKE8I6GXrB")
+
+        self.window = UIWindow(frame: CGRectMake(0,0,SCREEN_WIDTH,SCREEN_HEIGHT))
+        //初始化工具栏
+        self.window?.rootViewController = MainTabBarVC()
+        self.window?.makeKeyAndVisible()
+        
+/*        /**
         设置leanCloud
         */
         
@@ -52,6 +83,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         self.window?.rootViewController = tabbarController
         self.window?.makeKeyAndVisible()
+*/        
+        
         
         
         return true

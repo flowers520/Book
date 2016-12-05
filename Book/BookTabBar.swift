@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol BookTabBarDelegate{
+protocol BookTabBarDelegate:class{
     func comment()
     func commentController()
     func likeBook(btn: UIButton)
@@ -17,7 +17,8 @@ protocol BookTabBarDelegate{
 
 class BookTabBar: UIView {
 
-    var delegate: BookTabBarDelegate!
+    //声明为弱引用
+    weak var delegate: BookTabBarDelegate!
     
     override init(frame: CGRect){
         super.init(frame:frame)

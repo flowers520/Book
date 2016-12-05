@@ -48,6 +48,6 @@ class BookTitleView: UIView {
     }
     
     func choiceCover(){
-        self.delegate?.choiceCover!()
+        self.delegate?.choiceCover?()
     }
 }
